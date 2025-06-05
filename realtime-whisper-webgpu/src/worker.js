@@ -42,7 +42,8 @@ class AutomaticSpeechRecognitionPipeline {
 }
 
 let processing = false;
-async function generate({ audio, language }) {
+async function generate({ audio, language }) { // Use 'language' as the parameter name
+  language = 'english'; // Force English
   if (processing) return;
   processing = true;
 
@@ -84,7 +85,7 @@ async function generate({ audio, language }) {
   const outputs = await model.generate({
     ...inputs,
     max_new_tokens: MAX_NEW_TOKENS,
-    language,
+    language, // This will now correctly use the overridden 'english'
     streamer,
   });
 
