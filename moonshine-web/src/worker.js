@@ -25,7 +25,7 @@ const silero_vad = await AutoModel.from_pretrained(
   {
     config: { model_type: "custom" },
     dtype: "fp32", // Full-precision
-    sessionOptions: { executionProviders: ['webgpu', 'wasm'] },
+    session_options: { executionProviders: ['webgpu', 'wasm'] },
   },
 ).catch((error) => {
   self.postMessage({ error });
@@ -49,7 +49,7 @@ const transcriber = await pipeline(
     device,
     dtype: DEVICE_DTYPE_CONFIGS[device],
     language: 'english', // Added language parameter
-    sessionOptions: { executionProviders: ['webgpu', 'wasm'] },
+    session_options: { executionProviders: ['webgpu', 'wasm'] },
   },
 ).catch((error) => {
   self.postMessage({ error });

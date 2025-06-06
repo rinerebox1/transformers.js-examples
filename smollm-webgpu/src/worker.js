@@ -39,7 +39,7 @@ class TextGenerationPipeline {
       dtype: "q4f16",
       device: "webgpu",
       progress_callback,
-      sessionOptions: { executionProviders: ['webgpu', 'wasm'] },
+      session_options: { executionProviders: ['webgpu', 'wasm'] },
     });
 
     return Promise.all([this.tokenizer, this.model]);

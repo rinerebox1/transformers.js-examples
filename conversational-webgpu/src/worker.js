@@ -47,7 +47,7 @@ const silero_vad = await AutoModel.from_pretrained(
   {
     config: { model_type: "custom" },
     dtype: "fp32", // Full-precision
-    sessionOptions: { executionProviders: ['webgpu', 'wasm'] },
+    session_options: { executionProviders: ['webgpu', 'wasm'] },
   },
 ).catch((error) => {
   self.postMessage({ error });
@@ -71,7 +71,7 @@ const transcriber = await pipeline(
     device,
     dtype: DEVICE_DTYPE_CONFIGS[device],
     language: 'english',
-    sessionOptions: { executionProviders: ['webgpu', 'wasm'] },
+    session_options: { executionProviders: ['webgpu', 'wasm'] },
   },
 ).catch((error) => {
   self.postMessage({ error });
@@ -85,7 +85,7 @@ const tokenizer = await AutoTokenizer.from_pretrained(llm_model_id);
 const llm = await AutoModelForCausalLM.from_pretrained(llm_model_id, {
   dtype: "q4f16",
   device: "webgpu",
-  sessionOptions: { executionProviders: ['webgpu', 'wasm'] },
+  session_options: { executionProviders: ['webgpu', 'wasm'] },
 });
 
 const SYSTEM_MESSAGE = {
