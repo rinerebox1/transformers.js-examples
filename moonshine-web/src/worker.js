@@ -48,7 +48,7 @@ const transcriber = await pipeline(
   {
     device,
     dtype: DEVICE_DTYPE_CONFIGS[device],
-    language: 'english', // Added language parameter
+    language: 'japanese', // Changed to Japanese
     session_options: { executionProviders: ['webgpu', 'wasm'] },
   },
 ).catch((error) => {
